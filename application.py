@@ -1,14 +1,15 @@
-from flask import Flask, render_template, request,jsonify,redirect,session
+from flask import Flask, render_template, request,redirect,session, jsonify
 from flask_cors import CORS,cross_origin
 import requests
 import pymongo
 
 application = Flask(__name__) # initializing a flask app
 app=application
-
+app.config['SECRET_KEY'] = "b'\xf0\x95Ix}\xad4\xbc\xbc\xbamX\x06o\xf8W\xe2\xa0\xf8\x08\xca_\x87\x01'"
 client = pymongo.MongoClient("mongodb+srv://usernamehimanshu999:pwskills@cluster0.efukwgk.mongodb.net/?retryWrites=true&w=majority")
 db = client['practicum_data']
 users = db['users']
+
 
 @app.route('/',methods=['GET'])  # route to display the home page
 @cross_origin() ### to access to public
@@ -52,8 +53,6 @@ def login_fun():
         except Exception as e:
             print('The Exception message is: ',e)
             return 'something is wrong'    
-    else:
-        return render_template('login.html')
       
     return render_template('logedin_practicum.html')
         
@@ -100,6 +99,47 @@ def Order():
         except Exception as e:
             print('The Exception message is: ',e)
             return 'something is wrong'
+        
+@app.route('/payment.html',methods = ['POST','GET'])
+@cross_origin()
+def payment():
+    return render_template('payment.html')
+        
+cart_items = []
+total_price = 0
+
+@app.route('/add_to_cart', methods=['POST'])
+@cross_origin()
+def add_to_cart():
+    item = request.json
+    cart_items.append(item)
+    return jsonify({'message': 'Item added to cart successfully'})
+
+@app.route('/remove_from_cart', methods=['POST'])
+@cross_origin()
+def remove_from_cart():
+    item = request.json
+    if item in cart_items:
+        cart_items.remove(item)
+        return jsonify({'message': 'Item removed from cart successfully'})
+    else:
+        return jsonify({'message': 'Item not found in cart'})
+    
+db2 = client['Payment']
+orders_collection = db2['orders']
+
+
+@app.route('/place-order', methods=['POST','GET'])
+def place_order():
+    if request.method == 'POST':
+        order_details = request.json
+        orders_collection.insert_one(order_details).inserted_id
+        success = process_payment(order_details['totalPrice'])
+        jsonify({'success': success})
+        return render_template('payment.html')
+
+def process_payment(amount):
+    return True
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=8000, debug=True)

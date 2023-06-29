@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bite Mate</title>
-    <link rel="stylesheet" href="../static/css/practicum1.css" type="text/css"/>
+    <link rel="stylesheet" href="../static/css/payement.css" type="text/css"/>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
@@ -16,6 +16,8 @@
         crossorigin="anonymous">
   </head>
   <body>
+  <!--Header-->
+
     <header class="primary-header">
       <div class="container">
         <div class="nav-wrapper">
@@ -48,9 +50,9 @@
               <td><a href="#contact"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                 <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
               </svg></a></td>
-              <td><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              <td><a href="../login.html"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
               </svg></a></td>
             </tr>
           </table>
@@ -67,103 +69,69 @@
         </div>
       </div>
     </header>
+
+  <!--main body-->
     <main>
-      <p class="featured-rest">Featured Restaurants</p>
-      <div class="featured">
-        <!-- Slider main container -->
-        <div class="swiper">
-          <!-- Additional required wrapper -->
-          <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide">
-              <center><img src="static/images/restaurant1.jpg" alt="rest1" /></center>
+       
+        <h1>Checkout</h1>
+      
+        <section id="order-details">
+          <h2>Order Details</h2>
+          <table class="table2">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody id="order-items"></tbody>
+            <tfoot>
+              <tr>
+                <td>Delivery Charge:</td>
+                <td id="delivery-charge">₹ 40</td>
+              </tr>
+              <tr>
+                <td>Taxes:</td>
+                <td id="taxes">₹ 0</td>
+              </tr>
+              <tr>
+                <td>Discount:</td>
+                <td id="discount">₹ 0</td>
+              </tr>
+              <tr>
+                <td>Total:</td>
+                <td id="total">₹ 0</td>
+              </tr>
+            </tfoot>
+          </table>
+        </section>
+      
+        <section id="payment-method">
+          <h2>Payment Method</h2>
+          <form action="">
+          <div id="payment-options">
+            <div>
+              <input type="radio" id="paytm" name="payment" value="paytm">
+              <label for="paytm">Paytm</label>
             </div>
-            <div class="swiper-slide">
-              <center><img src="static/images/restaurant2.jpg" alt="rest2" /></center>
+            <div>
+              <input type="radio" id="phonepe" name="payment" value="phonepe">
+              <label for="phonepe">PhonePe</label>
             </div>
-            <div class="swiper-slide">
-              <center><img src="static/images/restaurant3.png" alt="rest3" /></center>
+            <div>
+              <input type="radio" id="upi" name="payment" value="upi">
+              <label for="upi">UPI ID</label>
             </div>
-            ...
           </div>
-          <!-- If we need pagination -->
-          <div class="swiper-pagination"></div>
-
-          <!-- If we need navigation buttons -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-
-          <!-- If we need scrollbar -->
-          <div class="swiper-scrollbar"></div>
-        </div>
-      </div>
-      <section class="categories">
-        <p class="featured-rest">Categories</p>
-        <table>
-          <tr>
-            <td><a href="./INDIAN.html">
-            <div class="card">
-              <div class="card-image"></div>
-                <div class="card-description">
-                  <p class="text-title"> INDIAN</p>
-                  <p class="text-body">Secret behind our Indian food has 6 different flavors: sweet, salty, bitter, sour, astringent, and spicy.</p>
-                </div>
-              </div></a>
-          </td>
-
-          <td><a href="#">
-            <div class="card">
-              <div class="card-image"></div>
-                <div class="card-description">
-                  <p class="text-title"> ITALIAN</p>
-                  <p class="text-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                </div>
-              </div></a>
-          </td>
-
-          <td><a href="#">
-            <div class="card">
-              <div class="card-image"></div>
-                <div class="card-description">
-                  <p class="text-title"> JAPANESE</p>
-                  <p class="text-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                </div>
-              </div></a>
-          </td>
-
-          <td><a href="#">
-            <div class="card">
-              <div class="card-image"></div>
-                <div class="card-description">
-                  <p class="text-title"> CHINESE</p>
-                  <p class="text-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                </div>
-              </div></a>
-          </td>
-
-          <td><a href="#">
-            <div class="card">
-              <div class="card-image"></div>
-                <div class="card-description">
-                  <p class="text-title">RUSSIAN</p>
-                  <p class="text-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                </div>
-              </div></a>
-          </td>
-
-          <td><a href="#">
-            <div class="card">
-              <div class="card-image"></div>
-                <div class="card-description">
-                  <p class="text-title"> AMERICAN</p>
-                  <p class="text-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-                </div>
-              </div>
-          </td></a>
-        </tr>
-        </table>
-      </section>
+          <input type="text" id="upi-id" placeholder="Enter UPI ID" style="display: none;">
+          
+        </form>
+        </section>
+        <button id="place-order" class="button3" onclick="placeOrder()">Place Order</button>
+      
     </main>
+
+<!--footer-->
     <footer
       class="primary-footer padding-block-700 bg-neutral-900 text-neutral-100"
     >
@@ -230,7 +198,7 @@
                 <li><a href="#">Restaurants</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="./login.html">Login</a></li>
+                <li><a href="#">Profile</a></li>
               </ul>
             </nav>
           </div>
@@ -243,7 +211,93 @@
           </div>
         </div>
       </div>
+
     </footer>
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const totalPrice = urlParams.get('totalPrice');
+const cartItemsData = JSON.parse(urlParams.get('cartItems'));
+
+// Function to format price in rupees
+function formatPrice(price) {
+  return `₹ ${price}`;
+}
+
+// Function to calculate and update the order total
+function updateOrderTotal() {
+  const subTotal = cartItemsData.reduce((total, item) => total + item.price, 0);
+  const deliveryCharge = 40;
+  const taxes = Math.round(subTotal * 0.1);
+  const discount = 0;
+  const total = subTotal + deliveryCharge + taxes - discount;
+
+  // Update the DOM elements with calculated values
+  document.getElementById('sub-total').textContent = formatPrice(subTotal);
+  document.getElementById('taxes').textContent = formatPrice(taxes);
+  document.getElementById('discount').textContent = formatPrice(discount);
+  document.getElementById('total').textContent = formatPrice(total);
+}
+
+
+function displayOrderItems() {
+  const orderItemsContainer = document.getElementById('order-items');
+  cartItemsData.forEach(item => {
+    const row = document.createElement('tr');
+
+    const itemName = document.createElement('td');
+    itemName.textContent = item.name;
+    row.appendChild(itemName);
+
+    const itemPrice = document.createElement('td');
+    itemPrice.textContent = formatPrice(item.price);
+    row.appendChild(itemPrice);
+
+    orderItemsContainer.appendChild(row);
+  });
+}
+
+function placeOrder() {
+  const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+  const upiId = document.getElementById('upi-id').value;
+
+  const orderDetails = {
+    totalPrice: totalPrice,
+    cartItems: cartItemsData,
+    deliveryCharge: 40,
+    taxes: Math.round(cartItemsData.reduce((total, item) => total + item.price, 0) * 0.1),
+    discount: 0,
+    paymentMethod: paymentMethod,
+    upiId: upiId
+  };
+
+  fetch('/place-order', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(orderDetails)
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert('Order placed successfully!');
+        window.location.href = '/payment.html';
+      } else {
+        alert('Failed to place the order. Please try again.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('An error occurred while placing the order. Please try again.');
+    });
+}
+
+window.onload = function () {
+  updateOrderTotal();
+  displayOrderItems();
+};
+
+</script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -251,32 +305,5 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
-    <script>
-      const swiper = new Swiper(".swiper", {
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        // Optional parameters
-        loop: true,
-
-        // If we need pagination
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-
-        // Navigation arrows
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-
-        // And if we need scrollbar
-        scrollbar: {
-          el: ".swiper-scrollbar",
-        },
-      });
-    </script>
   </body>
 </html>
