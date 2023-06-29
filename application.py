@@ -3,7 +3,7 @@ from flask_cors import CORS,cross_origin
 import requests
 import pymongo
 
-application = Flask(__name__) # initializing a flask app
+application = Flask(__name__)
 app=application
 app.config['SECRET_KEY'] = "b'\xf0\x95Ix}\xad4\xbc\xbc\xbamX\x06o\xf8W\xe2\xa0\xf8\x08\xca_\x87\x01'"
 client = pymongo.MongoClient("mongodb+srv://usernamehimanshu999:pwskills@cluster0.efukwgk.mongodb.net/?retryWrites=true&w=majority")
@@ -11,8 +11,8 @@ db = client['practicum_data']
 users = db['users']
 
 
-@app.route('/',methods=['GET'])  # route to display the home page
-@cross_origin() ### to access to public
+@app.route('/',methods=['GET']) 
+@cross_origin()
 def homePage():
     return render_template("practicum1.html")
 
