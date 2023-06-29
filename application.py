@@ -1,10 +1,14 @@
-from flask import Flask, render_template, request,jsonify
+from flask import Flask, render_template, request,jsonify,redirect,session
 from flask_cors import CORS,cross_origin
 import requests
 import pymongo
 
 application = Flask(__name__) # initializing a flask app
 app=application
+
+client = pymongo.MongoClient("mongodb+srv://usernamehimanshu999:pwskills@cluster0.efukwgk.mongodb.net/?retryWrites=true&w=majority")
+db = client['practicum_data']
+users = db['users']
 
 @app.route('/',methods=['GET'])  # route to display the home page
 @cross_origin() ### to access to public
@@ -38,51 +42,61 @@ def login_fun():
             mail = request.form['input_mail']
             password = request.form['input_pass']
             mydict = {"mail_id": mail,"password": password}
-            log_info.append(mydict)
-            client = pymongo.MongoClient("mongodb+srv://usernamehimanshu999:pwskills@cluster0.efukwgk.mongodb.net/?retryWrites=true&w=majority")
-            db = client['log_data_practicum']
-            log_website_col = db['login_user_data_practicum']
-            log_website_col.insert_many(log_info)
-            return render_template('logedin_practicum.html')
+            
+            user = db.users.find_one(mydict)
+            if user:
+                session['input_mail'] = mail
+                return redirect('/logedin_practicum.html')
+            else:
+                return 'Invalid username or password'
         except Exception as e:
             print('The Exception message is: ',e)
-            return 'something is wrong'
+            return 'something is wrong'    
     else:
         return render_template('login.html')
+      
+    return render_template('logedin_practicum.html')
+        
+    
 
 @app.route('/logedin_practicum2.html',methods=['POST','GET'])
 @cross_origin()
 def register_fun():
     if request.method == 'POST':
-        try:
-            information = []
-            Fname = request.form['input_name'].replace(" ","")
-            Lname = request.form['input_Lname'].replace(" ","")
-            mail = request.form['input_mail'].replace(" ","")
-            password = request.form['input_password'].replace(" ","")
-            conf_pass = request.form['input_Cpassword'].replace(" ","")
-            name = Fname + Lname
-            if conf_pass == password:
-                print("pass")
-            else:
-                print("Password not matched")
-            Reg_mydict = {"First_Name": Fname, "Last_Name": Lname, "UserNAME": name, "mail_id": mail,
-                "password": password}
-            information.append(Reg_mydict)
-            client = pymongo.MongoClient("mongodb+srv://usernamehimanshu999:pwskills@cluster0.efukwgk.mongodb.net/?retryWrites=true&w=majority")
-            db = client['data_practicum']
-            website_col = db['user_data_practicum']
-            website_col.insert_many(information)
-            return render_template('logedin_practicum2.html')
-        except Exception as e:
-            print('The Exception message is: ',e)
-            return 'something is wrong'
+        information = []
+        Fname = request.form['input_name'].replace(" ","")
+        Lname = request.form['input_Lname'].replace(" ","")
+        mail = request.form['input_mail'].replace(" ","")
+        password = request.form['input_password'].replace(" ","")
+        conf_pass = request.form['input_Cpassword'].replace(" ","")
+        name = Fname + Lname
+        if db.users.find_one({'mail_id': mail}):
+            return 'Username already exists'
+        if conf_pass == password:
+            print("pass")
+        else:
+            return "Password not matched"
+        Reg_mydict = {"First_Name": Fname, "Last_Name": Lname, "UserNAME": name, "mail_id": mail,
+            "password": password}
+        
+        db.users.insert_one(Reg_mydict)
+    return render_template('logedin_practicum2.html')
+        
 
 @app.route('/INDIAN.html',methods = ['POST','GET'])
 @cross_origin()
 def indian():
         try:
             return render_template("INDIAN.html")
+        except Exception as e:
+            print('The Exception message is: ',e)
+            return 'something is wrong'
+        
+@app.route('/Order.html',methods = ['POST','GET'])
+@cross_origin()
+def Order():
+        try:
+            return render_template("Order.html")
         except Exception as e:
             print('The Exception message is: ',e)
             return 'something is wrong'

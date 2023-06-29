@@ -67,6 +67,9 @@
         </div>
       </div>
     </header>
+
+
+<!--Main body-->    
     <main>
       <div>
         <div>
@@ -89,14 +92,135 @@
                   <div class="box2">E</div>
                 </div>
               </td>
+              <td>
+                <div id="filter-container">
+                  <label for="filter">Filter by:</label>
+                  <select id="filter">
+                    <option value="all">All</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="non-vegetarian">Non-Vegetarian</option>
+                    <option value="Chinese">Indo-Chinese</option>
+                  </select>
+                </div>
+              </td>
             </tr>
           </table>
         </div>
+        
+        <div class="restaurant-container">
+          <div class="restaurant-card">
+            
+            <h2>Restaurant 1</h2>
+            <p>Specialty: Vegetarian</p>
+            <p>Location: City A</p>
+            <a href="Order.html"><button onclick="orderOnline('Restaurant 1')">Delivery</button>
+            <button onclick="takeaway('Restaurant 1')">Takeaway</button></a>
+          </div>
+          
+          <div class="restaurant-card">
+            <h2>Restaurant 2</h2>
+            <p>Specialty: Non-Vegetarian</p>
+            <p>Location: City B</p>
+            <a href=""><button onclick="orderOnline('Restaurant 2')">Delivery</button>
+            <button onclick="takeaway('Restaurant 2')">Takeaway</button></a>
+          </div>
+          
+          <div class="restaurant-card">
+            <h2>Restaurant 3</h2>
+            <p>Specialty: Indo-Chinese</p>
+            <p>Location: City C</p>
+            <a href=""><button onclick="orderOnline('Restaurant 3')">Order Online</button>
+            <button onclick="takeaway('Restaurant 3')">Takeaway</button></a>
+          </div>
+
+          <div class="restaurant-card">
+            <h2>Restaurant 4</h2>
+            <p>Specialty: Vegetarian</p>
+            <p>Location: City D</p>
+            <a href=""><button onclick="orderOnline('Restaurant 4')">Delivery</button>
+            <button onclick="takeaway('Restaurant 4')">Takeaway</button></a>
+          </div>
+
+          <div class="restaurant-card">
+            <h2>Restaurant 5</h2>
+            <p>Specialty: Non-Vegetarian</p>
+            <p>Location: City E</p>
+            <a href="">
+            <button onclick="orderOnline('Restaurant 5')">Delivery</button>
+            <button onclick="takeaway('Restaurant 5')">Takeaway</button></a>
+          </div>
+
+          <div class="restaurant-card">
+            <h2>Restaurant 6</h2>
+            <p>Specialty: Indo-Chinese</p>
+            <p>Location: City F</p>
+            <a href="">
+            <button onclick="orderOnline('Restaurant 6')">Delivery</button>
+            <button onclick="takeaway('Restaurant 6')">Takeaway</button></a>
+          </div>
+
+          <div class="restaurant-card">
+            <h2>Restaurant 7</h2>
+            <p>Specialty: Vegetarian</p>
+            <p>Location: City G</p>
+            <a href="">
+            <button onclick="orderOnline('Restaurant 7')">Delivery</button>
+            <button onclick="takeaway('Restaurant 7')">Takeaway</button></a>
+          </div>
+
+          <div class="restaurant-card">
+            <h2>Restaurant 8</h2>
+            <p>Specialty: Indo-Chinese</p>
+            <p>Location: City H</p>
+            <a href="">
+            <button onclick="orderOnline('Restaurant 8')">Delivery</button>
+            <button onclick="takeaway('Restaurant 8')">Takeaway</button></a>
+          </div>
+
+          <div class="restaurant-card">
+            <h2>Restaurant 9</h2>
+            <p>Specialty: Non-Vegetarian</p>
+            <p>Location: City I</p>
+            <a href="">
+            <button onclick="orderOnline('Restaurant 9')">Delivery</button>
+            <button onclick="takeaway('Restaurant 9')">Takeaway</button></a>
+          </div>
+
+          <div class="restaurant-card">
+            <h2>Restaurant 10</h2>
+            <p>Specialty: Non-Vegetarian</p>
+            <p>Location: City J</p>
+            <a href="">
+            <button onclick="orderOnline('Restaurant 10')">Delivery</button>
+            <button onclick="takeaway('Restaurant 10')">Takeaway</button></a>
+          </div>
+
+          <div class="restaurant-card">
+            <h2>Restaurant 11</h2>
+            <p>Specialty: Indo-Chinese</p>
+            <p>Location: City K</p>
+            <a href="">
+            <button onclick="orderOnline('Restaurant 11')">Delivery</button>
+            <button onclick="takeaway('Restaurant 11')">Takeaway</button></a>
+          </div>
+
+          <div class="restaurant-card">
+            <h2>Restaurant 12</h2>
+            <p>Specialty:  Vegetarian</p>
+            <p>Location: City F</p>
+            <a href="">
+            <button onclick="orderOnline('Restaurant 12')">Delivery</button>
+            <button onclick="takeaway('Restaurant 12')">Takeaway</button></a>
+          </div>
+
         <div>
           
         </div>
       </div>
     </main>
+
+<!-- footer -->
+    
     <footer
       class="primary-footer padding-block-700 bg-neutral-900 text-neutral-100"
     >
@@ -177,6 +301,33 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      function orderOnline(restaurantName) {
+        console.log('Delivery:', restaurantName);
+      }
+      
+      function takeaway(restaurantName) {
+        console.log('Takeaway:', restaurantName);
+      }
+      
+      document.getElementById('filter').addEventListener('change', function() {
+        var filterValue = this.value;
+        
+        var restaurantCards = document.getElementsByClassName('restaurant-card');
+        
+        for (var i = 0; i < restaurantCards.length; i++) {
+          var specialty = restaurantCards[i].querySelector('p:nth-of-type(1)').textContent;
+          
+          if (filterValue === 'all' || specialty.toLowerCase().includes(filterValue.toLowerCase())) {
+            restaurantCards[i].style.display = 'block';
+          } else {
+            restaurantCards[i].style.display = 'none';
+          }
+        }
+      });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

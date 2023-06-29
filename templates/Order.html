@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bite Mate</title>
-    <link rel="stylesheet" href=".css" type="text/css"/>
+    <link rel="stylesheet" href="../static/css/Order.css" type="text/css"/>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
@@ -31,7 +31,7 @@
               <td><a href="#search">Search</a></td>
               <td><a href="#about">About</a></td>
               <td><a href="#contact">Contact</a></td>
-              <td><a href="./login.html">Login</a></td>
+              <td><a href="#">Profile</a></td>
             </tr>
             <tr>
               <td><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
@@ -50,9 +50,9 @@
               <td><a href="#contact"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
                 <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
               </svg></a></td>
-              <td><a href="../login.html"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
-                <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+              <td><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
               </svg></a></td>
             </tr>
           </table>
@@ -72,7 +72,132 @@
 
   <!--main body-->
     <main>
+        <h1 align = "center">Welcome to Our Restaurant!</h1>
+
+        <section id="restaurant-info">
+          <h2 align = "center">About Us</h2>
+          <center>
+          <p>Welcome to our restaurant! We offer a wide variety of delicious Indian dishes. Browse our menu and place your order.</p></center>
+        </section>
       
+        <section id="menu">
+          <h1 style="color: rgb(22, 3, 67);">Menu</h2>
+            <form action="/checkout">
+          <div class="food-item">
+              <p align="right">
+            <img src="butter-chicken.jpg" alt="Butter Chicken" ></p>
+            <h3>Butter Chicken</h3>
+            <p>₹300</p>
+            <button onclick="addToCart('Butter Chicken', 300)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="tandoori-chicken.jpg" alt="Tandoori Chicken" ></p>
+            <h3>Tandoori Chicken</h3>
+            <p>₹350</p>
+            <button onclick="addToCart('Tandoori Chicken', 350)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="paneer-tikka.jpg" alt="Paneer Tikka" ></p>
+            <h3>Paneer Tikka</h3>
+            <p>₹250</p>
+            <button onclick="addToCart('Paneer Tikka', 250)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="chicken-biryani.jpg" alt="Chicken Biryani" ></p>
+            <h3>Chicken Biryani</h3>
+            <p>₹400</p>
+            <button onclick="addToCart('Chicken Biryani', 400)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="palak-paneer.jpg" alt="Palak Paneer" > </p>
+            <h3>Palak Paneer</h3>
+            <p>₹280</p>
+            <button onclick="addToCart('Palak Paneer', 280)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="chole-bhature.jpg" alt="Chole Bhature" ></p>
+            <h3>Chole Bhature</h3>
+            <p>₹200</p>
+            <button onclick="addToCart('Chole Bhature', 200)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="mutton-rogan-josh.jpg" alt="Mutton Rogan Josh" ></p>
+            <h3>Mutton Rogan Josh</h3>
+            <p>₹450</p>
+            <button onclick="addToCart('Mutton Rogan Josh', 450)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="dosa.jpg" alt="Dosa" > </p>
+            <h3>Dosa</h3>
+            <p>₹150</p>
+            <button onclick="addToCart('Dosa', 150)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="chicken-tikka-masala.jpg" alt="Chicken Tikka Masala" > </p>
+            <h3>Chicken Tikka Masala</h3>
+            <p>₹320</p>
+            <button onclick="addToCart('Chicken Tikka Masala', 320)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="veg-biryani.jpg" alt="Veg Biryani" > </p>
+            <h3>Veg Biryani</h3>
+            <p>₹350</p>
+            <button onclick="addToCart('Veg Biryani', 350)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="naan.jpg" alt="Naan" > </p>
+            <h3>Naan</h3>
+            <p>₹50</p>
+            <button onclick="addToCart('Naan', 50)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="rajma-chawal.jpg" alt="Rajma Chawal" ></p>
+            <h3>Rajma Chawal</h3>
+            <p>₹220</p>
+            <button onclick="addToCart('Rajma Chawal', 220)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="gulab-jamun.jpg" alt="Gulab Jamun" > </p>
+            <h3>Gulab Jamun</h3>
+            <p>₹120</p>
+            <button onclick="addToCart('Gulab Jamun', 120)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="samosa.jpg" alt="Samosa" > </p>
+            <h3>Samosa</h3>
+            <p>₹80</p>
+            <button onclick="addToCart('Samosa', 80)" class = "button3">Add to Cart</button>
+          </div>
+          <div class="food-item">
+              <p align = "right">
+            <img src="masala-dosa.jpg" alt="Masala Dosa" > </p>
+            <h3>Masala Dosa</h3>
+            <p>₹180</p>
+            <button onclick="addToCart('Masala Dosa', 180)" class = "button3">Add to Cart</button>
+          </div>
+
+        </section>
+      
+    
+        <section id="cart">
+          <h2>Your Cart</h2>
+          <ul id="cart-items"></ul>
+          <p id="total-price">Total: ₹0.00</p>
+          <button onclick="checkout()">Checkout</button>
+        </section> </form>
     </main>
     <footer
       class="primary-footer padding-block-700 bg-neutral-900 text-neutral-100"
@@ -140,7 +265,7 @@
                 <li><a href="#">Restaurants</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="./login.html">Login</a></li>
+                <li><a href="#">Profile</a></li>
               </ul>
             </nav>
           </div>
@@ -156,6 +281,57 @@
 
 <!--Footer-->
     </footer>
+    <script>
+        let cartItems = [];
+let totalPrice = 0;
+
+function addToCart(name, price) {
+  cartItems.push({ name, price });
+  totalPrice += price;
+  updateCart();
+}
+
+function removeFromCart(index) {
+  const item = cartItems[index];
+  totalPrice -= item.price;
+  cartItems.splice(index, 1);
+  updateCart();
+}
+
+function updateCart() {
+  const cartElement = document.getElementById('cart-items');
+  const totalElement = document.getElementById('total-price');
+  cartElement.innerHTML = '';
+  cartItems.forEach((item, index) => {
+    const listItem = document.createElement('li');
+    listItem.innerText = `${item.name} - ₹${item.price}`;
+    const removeButton = document.createElement('button');
+    removeButton.innerText = 'Remove';
+    removeButton.addEventListener('click', () => {
+      removeFromCart(index);
+    });
+    listItem.appendChild(removeButton);
+    cartElement.appendChild(listItem);
+  });
+  totalElement.innerText = `Total: ₹${totalPrice.toFixed(2)}`;
+  const checkoutButton = document.querySelector('#cart button');
+  if (cartItems.length > 0) {
+    checkoutButton.disabled = false;
+  } else {
+    checkoutButton.disabled = true;
+  }
+}
+
+function checkout() {
+  // Perform the checkout process
+  alert('Thank you for your order!');
+  cartItems = [];
+  totalPrice = 0;
+  updateCart();
+}
+
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
